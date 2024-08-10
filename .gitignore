@@ -1,7 +1,9 @@
 ### IntelliJ IDEA ###
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+
+.idea/
+
+da_quanlynhanvien.iml
 
 ### Eclipse ###
 .apt_generated

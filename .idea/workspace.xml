@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="464f2ea2-4907-4375-b781-241fc0d07c1d" name="Changes" comment="" />
+    <list default="true" id="464f2ea2-4907-4375-b781-241fc0d07c1d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/constants/Contract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/Gender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/Literacy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Attendance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/LastUpdatedTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Leave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/SalaryChangeHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/SalaryHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MainApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/AttendanceLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/DepartmentLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/EmployeeLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/LeaveLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/PersonLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/UserLogicHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/JsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/Validator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/AdminMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ManagerMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/NormalUserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2jvAkcnNVMct1NqQwzUWdeJorQr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,12 +63,46 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.MainApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DUCLONG/OneDrive/Máy tính/TechMaster/long/da_quanlynhanvien"
+    "last_opened_file_path": "C:/Users/DUCLONG/OneDrive/Máy tính/TechMaster/long/Java27/09-library-management/09-library-management/src",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "promo.database"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="main" />
+      <recent name="view" />
+      <recent name="entity" />
+      <recent name="util" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.MainApp" />
+      <module name="da_quanlynhanvien" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -36,5 +113,16 @@
       <updated>1722257321047</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
