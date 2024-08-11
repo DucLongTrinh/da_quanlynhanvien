@@ -2,20 +2,17 @@ package view;
 
 import constants.UserRole;
 import entity.User;
-import java.util.HashMap;
-import java.util.Map;
+import service.MainMenuLogicHandle;
+
 import java.util.Scanner;
 
 public class MainMenu {
-
-  private Scanner scanner = new Scanner(System.in);
-  private Map<String, User> users = new HashMap<>(); // For storing users
+  private final Scanner scanner = new Scanner(System.in);
+  private final MainMenuLogicHandle logicHandle;
 
   public MainMenu() {
-    // Thêm người dùng mặc định
-    users.put("admin@example.com", new User("admin@example.com", "admin123", UserRole.ADMIN));
-    users.put("manager@example.com", new User("manager@example.com", "manager123", UserRole.MANAGER));
-    users.put("user@example.com", new User("user@example.com", "user123", UserRole.NORMAL));
+    logicHandle = new MainMenuLogicHandle();
+    logicHandle.initializeUsers(); // Khởi tạo người dùng mặc định
   }
 
   public void display() {
@@ -25,15 +22,15 @@ public class MainMenu {
     System.out.print("Mật khẩu: ");
     String password = scanner.nextLine();
 
-    User user = users.get(email);
+    User user = logicHandle.authenticateUser(scanner);
 
-    if (user != null && user.validatePassword(password) && user.isActive()) {
+    if (user != null && user.isActive()) {
       switch (user.getRole()) {
         case ADMIN:
-          new AdminMenu(null, null).display(); // Pass the required parameters
+          new AdminMenu().display(); // Giả sử AdminMenu xử lý logic riêng của nó
           break;
         case MANAGER:
-          new ManagerMenu(user.getDepartment()).display(); // Assuming department is a property of User
+          new ManagerMenu(user.getDepartment()).display();
           break;
         case NORMAL:
           new NormalUserMenu().display();

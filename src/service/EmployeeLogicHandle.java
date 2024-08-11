@@ -17,23 +17,22 @@ public class EmployeeLogicHandle {
     this.employeeList = employeeList;
   }
 
-
   // Các Method thêm nhân viên, xem thông tin, sửa thông tin, khóa tài khoản, tìm kiếm, tính lương được định nghĩa tại đây
 
-  // Method thêm nhân viên vào danh sách
+  // Thêm nhân viên vào danh sách
 
   public void addEmployee(Employee employee) {
     if (employee != null && !employeeList.contains(employee)) {
       employeeList.add(employee);
       System.out.println("Đã thêm nhân viên: " + employee.getName());
     } else {
-      System.out.println("Nhân viên đã tồn tại hoặc NULL không thể thêm: " + employee);
+      System.out.println("Nhân viên đã tồn tại hoặc NULL không thể thêm.");
     }
   }
 
 
   // Hiển thị thông tin nhân viên
-  public void displayEmployeeInfo(Scanner scanner) { // xem thông tin của một nhân viên cụ thể (dựa trên ID)
+  public void displayEmployeeInfo(Scanner scanner) {
     System.out.print("Nhập ID nhân viên để xem thông tin: ");
     String id = scanner.nextLine();
 
@@ -46,17 +45,6 @@ public class EmployeeLogicHandle {
     employee.displayInfo();
   }
 
-//  private void viewEmployees() { // hiển thị toàn bộ danh sách nhân viên trong phòng
-//    List<Employee> employees = currentDepartment.getEmployees();
-//    if (employees.isEmpty()) {
-//      System.out.println("Không có nhân viên nào trong phòng.");
-//    } else {
-//      System.out.println("Danh sách nhân viên trong phòng " + currentDepartment.getDepartmentName() + ":");
-//      for (Employee emp : employees) {
-//        System.out.println(emp);
-//      }
-//    }
-//  }
 
   // Cập nhật thông tin nhân viên
   public void updateEmployeeInfo(Scanner scanner) {
@@ -71,21 +59,6 @@ public class EmployeeLogicHandle {
 
     employee.updateInfo(scanner);
     System.out.println("Thông tin nhân viên " + employee.getName() + " đã được cập nhật.");
-  }
-
-  private void editEmployee() {
-    System.out.print("Nhập tên nhân viên cần sửa: ");
-    String name = scanner.nextLine();
-    Employee employeeToEdit = findEmployeeByName(name);
-
-    if (employeeToEdit != null) {
-      System.out.print("Nhập lương mới: ");
-      double newSalary = scanner.nextDouble();
-      employeeToEdit.setSalary(newSalary);
-      System.out.println("Thông tin nhân viên " + name + " đã được cập nhật.");
-    } else {
-      System.out.println("Không tìm thấy nhân viên có tên: " + name);
-    }
   }
 
   // Khóa tài khoản nhân viên
@@ -103,51 +76,26 @@ public class EmployeeLogicHandle {
     System.out.println("Tài khoản nhân viên " + employee.getName() + " đã bị khóa.");
   }
 
-//  private void lockEmployee() {
-//    System.out.print("Nhập tên nhân viên cần khóa tài khoản: ");
-//    String name = scanner.nextLine();
-//    Employee employeeToLock = findEmployeeByName(name);
-//
-//    if (employeeToLock != null) {
-//      employeeToLock.lockAccount();
-//      System.out.println("Đã khóa tài khoản nhân viên: " + name);
-//    } else {
-//      System.out.println("Không tìm thấy nhân viên có tên: " + name);
-//    }
-//  }
-
   // Tìm nhân viên theo ID
-  private Employee findEmployeeById(String id) {
+
+  public Employee findEmployeeById(String id) {
     for (Employee employee : employeeList) {
       if (employee.getId().equals(id)) {
         return employee;
       }
     }
-    return null;
+    return null; // Trả về null nếu không tìm thấy
   }
 
-//  private Employee findEmployeeByName(String name) {
-//    for (Employee emp : currentDepartment.getEmployees()) {
-//      if (emp.getName().equalsIgnoreCase(name)) {
-//        return emp;
-//      }
-//    }
-//    return null; // Trả về null nếu không tìm thấy nhân viên
-//  }
-//
-//  private void searchEmployee() {
-//    System.out.print("Nhập tên nhân viên cần tìm: ");
-//    String name = scanner.nextLine();
-//    Employee employeeFound = findEmployeeByName(name);
-//
-//    if (employeeFound != null) {
-//      System.out.println("Tìm thấy nhân viên: " + employeeFound);
-//    } else {
-//      System.out.println("Không tìm thấy nhân viên nào có tên: " + name);
-//    }
-//  }
-
-
+  // để tìm kiếm nhân viên bằng ID hoặc tên:
+  public Employee findEmployeeByIdOrName(String query) {
+    for (Employee employee : employeeList) {
+      if (employee.getId().equalsIgnoreCase(query) || employee.getName().equalsIgnoreCase(query)) {
+        return employee;
+      }
+    }
+    return null; // Nếu không tìm thấy nhân viên nào
+  }
 
   // Tính lương cho nhân viên
   public void calculateEmployeeSalary(Scanner scanner) {

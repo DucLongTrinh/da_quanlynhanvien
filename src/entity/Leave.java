@@ -2,25 +2,21 @@ package entity;
 
 import java.time.LocalDate;
 
-public class Leave { // mô tả thông tin về các ngày nghỉ phép của nhân viên
+public class Leave {
+
   private LocalDate startDate;
   private LocalDate endDate;
   private String reason;
+  private String approvalStatus;
 
-  // constructor
   public Leave(LocalDate startDate, LocalDate endDate, String reason) {
     this.startDate = startDate;
     this.endDate = endDate;
     this.reason = reason;
-  }
-
-  public void displayLeaveInfo() {
-    System.out.println("Ngày nghỉ: " + startDate + " đến " + endDate + ", Lý do: " + reason);
+    this.approvalStatus = "Pending"; // Trạng thái mặc định khi tạo yêu cầu
   }
 
   // Getters and Setters
-
-
   public LocalDate getStartDate() {
     return startDate;
   }
@@ -44,4 +40,20 @@ public class Leave { // mô tả thông tin về các ngày nghỉ phép của n
   public void setReason(String reason) {
     this.reason = reason;
   }
+
+  public String getApprovalStatus() {
+    return approvalStatus;
+  }
+
+  public void setApprovalStatus(String approvalStatus) {
+    this.approvalStatus = approvalStatus;
+  }
+
+  // Phương thức hiển thị thông tin ngày nghỉ
+  public void displayLeaveInfo() {
+    System.out.println("Từ ngày: " + startDate + " đến ngày: " + endDate +
+        ", Lý do: " + reason +
+        ", Trạng thái: " + approvalStatus);
+  }
+
 }

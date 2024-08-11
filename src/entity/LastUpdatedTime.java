@@ -2,7 +2,7 @@ package entity;
 
 import java.time.LocalDateTime;
 
-public class LastUpdatedTime {
+public class LastUpdatedTime { // Theo dõi thời gian cập nhật thông tin của nhân viên
   private LocalDateTime lastUpdated;
   private String updatedBy; // Người thực hiện cập nhật
   private String updateReason; // Lý do cập nhật

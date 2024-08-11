@@ -2,17 +2,21 @@ package view;
 
 import entity.Department;
 import entity.Employee;
+import service.AdminMenuLogicHandle;
+import service.EmployeeLogicHandle;
+
 import java.util.List;
 import java.util.Scanner;
-import service.EmployeeLogicHandle;
 
 public class AdminMenu {
 
   private Scanner scanner = new Scanner(System.in);
   private EmployeeLogicHandle employeeLogicHandle;
+  private AdminMenuLogicHandle adminMenuLogicHandle;
 
   public AdminMenu(List<Department> departments, List<Employee> employeeList) {
     this.employeeLogicHandle = new EmployeeLogicHandle(employeeList);
+    this.adminMenuLogicHandle = new AdminMenuLogicHandle(departments);
   }
 
   public void display() {
@@ -46,13 +50,13 @@ public class AdminMenu {
           employeeLogicHandle.lockEmployeeAccount(scanner);
           break;
         case 5:
-          employeeLogicHandle.searchEmployee(scanner);
+          searchEmployee();
           break;
         case 6:
           employeeLogicHandle.calculateEmployeeSalary(scanner);
           break;
         case 7:
-          manageDepartments(); // Placeholder for department management
+          adminMenuLogicHandle.manageDepartments(scanner);
           break;
         case 0:
           System.out.println("Đăng xuất thành công.");
@@ -63,8 +67,15 @@ public class AdminMenu {
     } while (choice != 0);
   }
 
-  private void manageDepartments() {
-    // Implement department management logic here
-    System.out.println("Quản lý phòng ban chưa được cài đặt.");
+  private void searchEmployee() {
+    System.out.print("Nhập ID hoặc tên nhân viên cần tìm: ");
+    String query = scanner.nextLine();
+    Employee foundEmployee = employeeLogicHandle.findEmployeeByIdOrName(
+        query); // Tìm kiếm bằng ID hoặc tên
+    if (foundEmployee != null) {
+      System.out.println("Thông tin nhân viên: " + foundEmployee);
+    } else {
+      System.out.println("Không tìm thấy nhân viên với ID hoặc tên: " + query);
+    }
   }
 }

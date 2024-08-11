@@ -1,14 +1,15 @@
 package main;
 
-import java.util.Scanner;
 import entity.User;
-import service.UserLogicHandle;
+import service.MainMenuLogicHandle;
 import view.MainMenu;
+
+import java.util.Scanner;
 
 public class MainApp {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    UserLogicHandle userLogicHandle = new UserLogicHandle();
+    MainMenuLogicHandle mainMenuLogicHandle = new MainMenuLogicHandle();
 
     while (true) {
       System.out.println("\n--- Ứng dụng Quản lý Nhân viên ---");
@@ -22,12 +23,14 @@ public class MainApp {
 
       switch (choice) {
         case 1:
-          userLogicHandle.registerUser(scanner);
+          mainMenuLogicHandle.registerUser(scanner);
           break;
         case 2:
-          User user = userLogicHandle.authenticateUser(scanner);
+          User user = mainMenuLogicHandle.authenticateUser(scanner);
           if (user != null) {
-            new MainMenu(user).display();
+            new MainMenu().display(); // Call the display method of MainMenu
+          } else {
+            System.out.println("Đăng nhập thất bại!");
           }
           break;
         case 3:

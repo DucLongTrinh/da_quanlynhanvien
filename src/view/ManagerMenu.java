@@ -4,16 +4,21 @@ import entity.Department;
 import entity.Employee;
 import java.util.List;
 import java.util.Scanner;
+import service.ManagerMenuLogicHandle;
 
 public class ManagerMenu {
+
   private Department currentDepartment;
   private List<Employee> employeeList; // List of employees in the department
   private Scanner scanner;
+  private ManagerMenuLogicHandle managerMenuLogicHandle; // Thêm đối tượng ManagerMenuLogicHandle
 
   public ManagerMenu(Department department, List<Employee> employeeList) {
     this.currentDepartment = department;
     this.employeeList = employeeList;
     this.scanner = new Scanner(System.in);
+    this.managerMenuLogicHandle = new ManagerMenuLogicHandle(department,
+        employeeList); // Khởi tạo đối tượng
   }
 
   public void display() {
@@ -22,34 +27,38 @@ public class ManagerMenu {
       System.out.println("===== Menu Trưởng Phòng =====");
       System.out.println("1. Thêm nhân viên mới thuộc phòng ban");
       System.out.println("2. Xem thông tin nhân viên thuộc phòng ban");
-      System.out.println("3. Sửa thông tin nhân viên");
-      System.out.println("4. Khóa tài khoản nhân viên");
-      System.out.println("5. Tìm kiếm nhân viên");
-      System.out.println("6. Tính lương cho nhân viên");
+      System.out.println("3. Sửa thông tin nhân viên thuộc phòng ban");
+      System.out.println("4. Khóa tài khoản nhân viên thuộc phòng ban");
+      System.out.println("5. Tìm kiếm nhân viên thuộc phòng ban");
+      System.out.println("6. Tính lương cho nhân viên thuộc phòng ban");
+      System.out.println("7. Thêm ngày nghỉ cho nhân viên");
       System.out.println("0. Đăng xuất");
       System.out.print("Chọn chức năng: ");
 
       choice = scanner.nextInt();
-      scanner.nextLine(); // Read remaining line
+      scanner.nextLine(); // Đọc dòng còn lại
 
       switch (choice) {
         case 1:
-          addEmployee();
+          managerMenuLogicHandle.addEmployee();
           break;
         case 2:
-          displayEmployeeInfo();
+          managerMenuLogicHandle.displayEmployeeInfo();
           break;
         case 3:
-          updateEmployeeInfo();
+          managerMenuLogicHandle.updateEmployeeInfo();
           break;
         case 4:
-          lockEmployeeAccount();
+          managerMenuLogicHandle.lockEmployeeAccount();
           break;
         case 5:
-          searchEmployee();
+          managerMenuLogicHandle.searchEmployee();
           break;
         case 6:
-          calculateEmployeeSalary();
+          managerMenuLogicHandle.calculateEmployeeSalary();
+          break;
+        case 7:
+          managerMenuLogicHandle.addLeaveToEmployee();
           break;
         case 0:
           System.out.println("Đăng xuất thành công.");
@@ -60,35 +69,4 @@ public class ManagerMenu {
     } while (choice != 0);
   }
 
-  private void addEmployee() {
-    // Logic for adding a new employee
-    System.out.println("Chức năng thêm nhân viên đang được phát triển.");
-  }
-
-  private void displayEmployeeInfo() {
-    // Logic for displaying employee information
-    for (Employee employee : employeeList) {
-      System.out.println(employee);  // Assuming Employee has a toString method
-    }
-  }
-
-  private void updateEmployeeInfo() {
-    // Logic for updating employee information
-    System.out.println("Chức năng sửa thông tin nhân viên đang được phát triển.");
-  }
-
-  private void lockEmployeeAccount() {
-    // Logic for locking an employee account
-    System.out.println("Chức năng khóa tài khoản nhân viên đang được phát triển.");
-  }
-
-  private void searchEmployee() {
-    // Logic for searching for an employee
-    System.out.println("Chức năng tìm kiếm nhân viên đang được phát triển.");
-  }
-
-  private void calculateEmployeeSalary() {
-    // Logic for calculating employee salary
-    System.out.println("Chức năng tính lương cho nhân viên đang được phát triển.");
-  }
 }

@@ -29,16 +29,19 @@ public class Employee extends Person {
   private List<Leave> leaves; // Danh sách ngày nghỉ phép
   private boolean isLocked; // Để xác định trạng thái khóa tài khoản
 
+  // Khai báo lịch sử làm việc và lịch sử nghỉ phép
+  private List<WorkHistory> workHistory; // Danh sách lịch sử làm việc
+  private List<Leave> leaveHistory; // Danh sách lịch sử nghỉ phép
+
   // Constructor
 
-
   public Employee(Gender gender, LocalDate dateOfBirth, String email, String address,
-      String phoneNumber, String id, String name, Department department,
-      int salary, double salaryScale, Literacy literacy, Contract contract,
-      String areaExpertise, LocalDate hiredDate, String workingStartedDate,
-      Status status, LastUpdatedTime lastUpdatedTime,
-      List<Attendance> attendances, List<Leave> leaves) {
-
+      String phoneNumber, String id, String name, Department department, int salary,
+      double salaryScale, Literacy literacy, Contract contract, String areaExpertise,
+      LocalDate hiredDate, String workingStartedDate, Status status,
+      LastUpdatedTime lastUpdatedTime,
+      List<Attendance> attendances, List<Leave> leaves,
+      List<WorkHistory> workHistory, List<Leave> leaveHistory) {
     super(gender, dateOfBirth, email, address, phoneNumber);
     this.id = id;
     this.name = name;
@@ -54,12 +57,12 @@ public class Employee extends Person {
     this.lastUpdatedTime = lastUpdatedTime;
     this.attendances = attendances != null ? attendances : new ArrayList<>();
     this.leaves = leaves != null ? leaves : new ArrayList<>(); // Khởi tạo danh sách ngày nghỉ
+    this.workHistory = workHistory != null ? workHistory : new ArrayList<>();
+    this.leaveHistory = leaveHistory != null ? leaveHistory : new ArrayList<>();
     this.isLocked = false; // Mặc định tài khoản chưa bị khóa
+
   }
 
-//  public void lockAccount() {
-//    isLocked = true;
-//  }
 
   // Getters and Setters cho các thuộc tính cụ thể của Employee
 
@@ -175,6 +178,26 @@ public class Employee extends Person {
     this.leaves = leaves;
   }
 
+  public void setLocked(boolean locked) {
+    isLocked = locked;
+  }
+
+  public List<WorkHistory> getWorkHistory() {
+    return workHistory;
+  }
+
+  public void setWorkHistory(List<WorkHistory> workHistory) {
+    this.workHistory = workHistory;
+  }
+
+  public List<Leave> getLeaveHistory() {
+    return leaveHistory;
+  }
+
+  public void setLeaveHistory(List<Leave> leaveHistory) {
+    this.leaveHistory = leaveHistory;
+  }
+
   ///===============
 
   @Override
@@ -183,6 +206,20 @@ public class Employee extends Person {
         "id='" + id + '\'' +
         ", name='" + name + '\'' +
         ", salary=" + salary +
+        ", department=" + department +
+        ", salaryScale=" + salaryScale +
+        ", literacy=" + literacy +
+        ", contract=" + contract +
+        ", areaExpertise='" + areaExpertise + '\'' +
+        ", hiredDate=" + hiredDate +
+        ", workingStartedDate='" + workingStartedDate + '\'' +
+        ", status=" + status +
+        ", lastUpdatedTime=" + lastUpdatedTime +
+        ", attendances=" + attendances +
+        ", leaves=" + leaves +
+        ", isLocked=" + isLocked +
+        ", workHistory=" + workHistory +
+        ", leaveHistory=" + leaveHistory +
         '}';
   }
 
@@ -190,38 +227,72 @@ public class Employee extends Person {
 
   // Thêm nhân viên mới
   public static Employee addEmployee(Scanner scanner) {
+
     System.out.print("Nhập ID nhân viên: ");
     String id = scanner.nextLine();
+
     System.out.print("Nhập tên nhân viên: ");
     String name = scanner.nextLine();
+
     System.out.print("Nhập phòng ban: ");
     Department department = new Department(scanner.nextLine()); // Giả sử bạn có lớp Department
+
     System.out.print("Nhập lương: ");
     int salary = Integer.parseInt(scanner.nextLine());
+
     System.out.print("Nhập hệ số lương: ");
     double salaryScale = Double.parseDouble(scanner.nextLine());
+
     System.out.print("Nhập trình độ học vấn: ");
-    Literacy literacy = Literacy.valueOf(
-        scanner.nextLine().toUpperCase()); // Giả sử bạn có enum Literacy
+    Literacy literacy = Literacy.valueOf(scanner.nextLine().toUpperCase()); // Giả sử bạn có enum Literacy
+
     System.out.print("Nhập loại hợp đồng: ");
-    Contract contract = Contract.valueOf(
-        scanner.nextLine().toUpperCase()); // Giả sử bạn có enum Contract
+    Contract contract = Contract.valueOf(scanner.nextLine().toUpperCase()); // Giả sử bạn có enum Contract
+
     System.out.print("Nhập lĩnh vực chuyên môn: ");
     String areaExpertise = scanner.nextLine();
+
     System.out.print("Nhập ngày tuyển dụng (yyyy-mm-dd): ");
     LocalDate hiredDate = LocalDate.parse(scanner.nextLine());
+
     System.out.print("Nhập ngày bắt đầu làm việc: ");
     String workingStartedDate = scanner.nextLine();
+
     Status status = Status.ACTIVE; // Mặc định trạng thái là ACTIVE
+
     LastUpdatedTime lastUpdatedTime = new LastUpdatedTime(); // Giả sử bạn có lớp LastUpdatedTime
+
     List<Attendance> attendances = new ArrayList<>(); // Khởi tạo danh sách Attendance
     List<Leave> leaves = new ArrayList<>(); // Khởi tạo danh sách Leave
 
-    return new Employee(Gender.MALE, LocalDate.now(), "test@example.com", "Address", "123456789",
-        id, name, department,
-        salary, salaryScale, literacy, contract, areaExpertise, hiredDate, workingStartedDate,
+    // Khởi tạo lịch sử làm việc và lịch sử nghỉ phép
+    List<WorkHistory> workHistory = new ArrayList<>(); // Khởi tạo danh sách lịch sử làm việc
+    List<Leave> leaveHistory = new ArrayList<>(); // Khởi tạo danh sách lịch sử nghỉ phép
+
+    // Trả về đối tượng Employee đã được khởi tạo với tất cả thông tin cần thiết
+    return new Employee(
+        Gender.MALE, // Giả sử giới tính mặc định là NAM
+        LocalDate.now(), // Ngày sinh mặc định
+        "test@example.com", // Email mặc định, cần sửa lại nếu cần
+        "Address", // Địa chỉ mặc định, cần sửa lại nếu cần
+        "123456789", // Số điện thoại mặc định
+        id,
+        name,
+        department,
+        salary,
+        salaryScale,
+        literacy,
+        contract,
+        areaExpertise,
+        hiredDate,
+        workingStartedDate,
         status,
-        lastUpdatedTime, attendances, leaves);
+        lastUpdatedTime,
+        attendances,
+        leaves,
+        workHistory, // Lịch sử làm việc
+        leaveHistory // Lịch sử nghỉ phép
+    );
   }
 
 
@@ -257,6 +328,21 @@ public class Employee extends Person {
   // Getter cho trạng thái khóa tài khoản
   public boolean isLocked() {
     return isLocked;
+  }
+
+
+  // Method hiển thị lịch sử làm việc
+  public void displayWorkHistory() {
+    System.out.println("Lịch sử làm việc của " + name + ":");
+    for (WorkHistory history : workHistory) {
+      System.out.println(history); // Giả định rằng WorkHistory đã được định nghĩa và có phương thức toString()
+    }
+  }
+
+
+  // Method thêm ngày nghỉ vào lịch sử
+  public void addLeave(Leave leave) {
+    leaveHistory.add(leave);
   }
 }
 

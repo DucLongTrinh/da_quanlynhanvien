@@ -3,7 +3,7 @@ package entity;
 import java.time.LocalDateTime;
 import java.time.Duration;
 
-public class Attendance { // lưu trữ thông tin về chấm công của nhân viên
+public class Attendance { // lưu trữ thông tin về sự có mặt của nhân viên (chấm công)
 
   private Employee employee; // Đối tượng nhân viên
   private LocalDateTime checkInTime; // Thời gian vào làm
