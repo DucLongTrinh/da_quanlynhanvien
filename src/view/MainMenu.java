@@ -27,7 +27,7 @@ public class MainMenu {
 
     User user = logicHandle.authenticateUser(email, password);
     if (user != null) {
-      display(user); // Gọi phương thức hiển thị theo quyền
+      display(user);  // method hiển thị theo quyền
     } else {
       System.out.println("Đăng nhập thất bại! Vui lòng kiểm tra lại email hoặc mật khẩu.");
     }

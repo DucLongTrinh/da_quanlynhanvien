@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="464f2ea2-4907-4375-b781-241fc0d07c1d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/LastUpdatedTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/LastUpdatedTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AdminMenuLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AdminMenuLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/EmployeeLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/EmployeeLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/LeaveHistoryLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LeaveHistoryLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/LeaveLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LeaveLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/MainMenuLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/MainMenuLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/ManagerMenuLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ManagerMenuLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/NormalUserMenuLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/NormalUserMenuLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/PersonLogicHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/PersonLogicHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/admin/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/manager/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/NormalUserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/normal/NormalUserMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
