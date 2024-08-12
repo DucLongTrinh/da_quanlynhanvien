@@ -1,5 +1,6 @@
 package service;
 
+import entity.Leave;
 import entity.LeaveHistory;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class LeaveHistoryLogicHandle {
         .filter(leaveHistory -> leaveHistory.getReason().equalsIgnoreCase(reason))
         .collect(Collectors.toList());
   }
+
 
   // Các phương thức khác (như cập nhật lịch sử, xóa, v.v.) có thể được thêm vào đây
 }

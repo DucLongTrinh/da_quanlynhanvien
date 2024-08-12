@@ -2,7 +2,7 @@ package constants;
 
 public enum Status {
   ACTIVE("Hoạt động"),
-  INACTIVE("Không hoạt động"),
+  INACTIVE("Không hoạt động");
 
   private final String value;
 

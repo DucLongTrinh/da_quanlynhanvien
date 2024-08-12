@@ -50,14 +50,14 @@ public class AdminMenuLogicHandle {
 
   private void addDepartment(Scanner scanner) {
     System.out.print("Nhập mã phòng ban mới: ");
-    String departmentId = scanner.nextLine();
+    int departmentId = scanner.nextInt();
     System.out.print("Nhập tên phòng ban mới: ");
     String departmentName = scanner.nextLine();
     if (departmentName.isEmpty()) {
       System.out.println("Tên phòng ban không được để trống.");
       return;
     }
-    departments.add(new Department(departmentId, departmentName));
+    departments.add(new Department( departmentId, departmentName));
     System.out.println("Phòng ban \"" + departmentName + "\" đã được thêm.");
   }
 

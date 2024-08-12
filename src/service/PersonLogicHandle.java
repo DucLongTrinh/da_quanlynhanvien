@@ -17,14 +17,14 @@ public class PersonLogicHandle {
 
   // Thêm người dùng mới
   public void addPerson(Scanner scanner) {
+    System.out.print("Nhập tên: ");
+    String name = scanner.nextLine();
+
     System.out.print("Nhập giới tính (MALE/FEMALE): ");
     Gender gender = Gender.valueOf(scanner.nextLine().toUpperCase());
 
     System.out.print("Nhập ngày sinh (yyyy-mm-dd): ");
     LocalDate dateOfBirth = LocalDate.parse(scanner.nextLine());
-
-    System.out.print("Nhập email: ");
-    String email = scanner.nextLine();
 
     System.out.print("Nhập địa chỉ: ");
     String address = scanner.nextLine();
@@ -32,7 +32,8 @@ public class PersonLogicHandle {
     System.out.print("Nhập số điện thoại: ");
     String phoneNumber = scanner.nextLine();
 
-    Person person = new Person(gender, dateOfBirth, email, address, phoneNumber);
+    // Tạo đối tượng Person mới và thêm vào danh sách
+    Person person = new Person(name, null, gender, dateOfBirth, address, phoneNumber);
     personList.add(person);
     System.out.println("Người dùng đã được thêm thành công.");
   }
@@ -40,26 +41,22 @@ public class PersonLogicHandle {
   // Cập nhật thông tin người dùng
   public void updatePersonInfo(Scanner scanner) {
     System.out.print("Nhập ID người dùng để cập nhật: ");
-    int index = Integer.parseInt(scanner.nextLine());
+    String id = scanner.nextLine();
 
-    if (index < 0 || index >= personList.size()) {
-      System.out.println("Không tìm thấy người dùng với ID: " + index);
+    // Tìm kiếm người dùng theo ID
+    Person person = findPersonById(id);
+    if (person == null) {
+      System.out.println("Không tìm thấy người dùng với ID: " + id);
       return;
     }
 
-    Person person = personList.get(index);
-
-    System.out.print("Nhập giới tính mới (MALE/FEMALE): ");
+    System.out.print("Nhập giới tính (MALE/FEMALE): ");
     Gender gender = Gender.valueOf(scanner.nextLine().toUpperCase());
     person.setGender(gender);
 
     System.out.print("Nhập ngày sinh mới (yyyy-mm-dd): ");
     LocalDate dateOfBirth = LocalDate.parse(scanner.nextLine());
     person.setDateOfBirth(dateOfBirth);
-
-    System.out.print("Nhập email mới: ");
-    String email = scanner.nextLine();
-    person.setEmail(email);
 
     System.out.print("Nhập địa chỉ mới: ");
     String address = scanner.nextLine();
@@ -75,29 +72,26 @@ public class PersonLogicHandle {
   // Hiển thị thông tin người dùng
   public void displayPersonInfo(Scanner scanner) {
     System.out.print("Nhập ID người dùng để xem thông tin: ");
-    int index = Integer.parseInt(scanner.nextLine());
+    String id = scanner.nextLine();
 
-    if (index < 0 || index >= personList.size()) {
-      System.out.println("Không tìm thấy người dùng với ID: " + index);
+    // Tìm kiếm người dùng theo ID
+    Person person = findPersonById(id);
+    if (person == null) {
+      System.out.println("Không tìm thấy người dùng với ID: " + id);
       return;
     }
 
-    Person person = personList.get(index);
     System.out.println("Thông tin người dùng:");
     person.displayInfo();
   }
 
-  // Xóa người dùng
-  public void removePerson(Scanner scanner) {
-    System.out.print("Nhập ID người dùng để xóa: ");
-    int index = Integer.parseInt(scanner.nextLine());
-
-    if (index < 0 || index >= personList.size()) {
-      System.out.println("Không tìm thấy người dùng với ID: " + index);
-      return;
+  // method tìm kiếm người dùng theo ID
+  private Person findPersonById(String id) {
+    for (Person person : personList) {
+      if (person.getId().equals(id)) {
+        return person;
+      }
     }
-
-    personList.remove(index);
-    System.out.println("Người dùng đã được xóa thành công.");
+    return null; // Không tìm thấy người dùng
   }
 }

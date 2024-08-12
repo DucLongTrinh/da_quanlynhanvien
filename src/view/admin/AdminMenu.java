@@ -1,4 +1,4 @@
-package view;
+package view.admin;
 
 import entity.Department;
 import entity.Employee;
@@ -14,9 +14,18 @@ public class AdminMenu {
   private EmployeeLogicHandle employeeLogicHandle;
   private AdminMenuLogicHandle adminMenuLogicHandle;
 
-  public AdminMenu(List<Department> departments, List<Employee> employeeList) {
-    this.employeeLogicHandle = new EmployeeLogicHandle(employeeList);
-    this.adminMenuLogicHandle = new AdminMenuLogicHandle(departments);
+  private List<Department> departments;
+  private List<Employee> employees;
+
+//  public AdminMenu(List<Department> departments, List<Employee> employeeList) {
+//    this.employeeLogicHandle = new EmployeeLogicHandle(employeeList);
+//    this.adminMenuLogicHandle = new AdminMenuLogicHandle(departments);
+//  }
+
+  // Constructor yêu cầu hai đối số
+  public AdminMenu(List<Department> departments, List<Employee> employees) {
+    this.departments = departments;
+    this.employees = employees;
   }
 
   public void display() {
@@ -70,8 +79,7 @@ public class AdminMenu {
   private void searchEmployee() {
     System.out.print("Nhập ID hoặc tên nhân viên cần tìm: ");
     String query = scanner.nextLine();
-    Employee foundEmployee = employeeLogicHandle.findEmployeeByIdOrName(
-        query); // Tìm kiếm bằng ID hoặc tên
+    Employee foundEmployee = employeeLogicHandle.findEmployeeByIdOrName(query); // Tìm kiếm bằng ID hoặc tên
     if (foundEmployee != null) {
       System.out.println("Thông tin nhân viên: " + foundEmployee);
     } else {

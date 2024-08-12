@@ -9,11 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NormalUserMenuLogicHandle {
+
   private List<Employee> employeeList;
   private Scanner scanner;
   private Employee currentUser; // Nhân viên hiện tại
 
-  public NormalUserMenuLogicHandle(List<Employee> employeeList, Scanner scanner, Employee currentUser) {
+  public NormalUserMenuLogicHandle(List<Employee> employeeList, Scanner scanner,
+      Employee currentUser) {
     this.employeeList = employeeList;
     this.scanner = scanner;
     this.currentUser = currentUser; // Nhân viên hiện tại
@@ -23,7 +25,7 @@ public class NormalUserMenuLogicHandle {
   public void viewPersonalInfo() {
     if (currentUser != null) {
       System.out.println("Thông tin cá nhân:");
-      currentUser.displayInfo();
+      System.out.println(currentUser); // Giả sử toString của Employee sẽ hiển thị thông tin
     } else {
       System.out.println("Không tìm thấy thông tin người dùng hiện tại.");
     }
@@ -33,7 +35,15 @@ public class NormalUserMenuLogicHandle {
   public void updatePersonalInfo() {
     if (currentUser != null) {
       System.out.println("Cập nhật thông tin cá nhân:");
-      currentUser.updateInfo(scanner);
+      System.out.print("Nhập tên mới: ");
+      String newName = scanner.nextLine();
+      currentUser.setName(newName);  // Giả sử có method setName trong Employee
+
+      System.out.print("Nhập lương mới: ");
+      double newSalary = scanner.nextDouble();
+      currentUser.setSalary(newSalary); // giả sử có method setSalary trong Employee
+      scanner.nextLine(); // Đọc dấu dòng sau khi nhập số
+
       System.out.println("Thông tin đã được cập nhật.");
     } else {
       System.out.println("Không tìm thấy thông tin người dùng hiện tại.");
@@ -44,8 +54,8 @@ public class NormalUserMenuLogicHandle {
   public void viewWorkHistory() {
     if (currentUser != null) {
       System.out.println("Lịch sử làm việc của " + currentUser.getName() + ":");
-      // Nếu bạn có một phương thức trong Employee để hiển thị lịch sử làm việc
-      currentUser.displayWorkHistory();
+      // Giả sử có một method trong Employee để hiển thị lịch sử làm việc
+      currentUser.displayWorkHistory(); // Bạn có thể cần định nghĩa phương thức này trong Employee
     } else {
       System.out.println("Không tìm thấy thông tin người dùng hiện tại.");
     }
@@ -54,7 +64,7 @@ public class NormalUserMenuLogicHandle {
   // Kiểm tra lương
   public void checkSalary() {
     if (currentUser != null) {
-      double salary = currentUser.calculateSalary();
+      double salary = currentUser.calculateSalary(); // Giả sử có method calculateSalary trong Employee
       System.out.println("Lương của nhân viên " + currentUser.getName() + " là: " + salary);
     } else {
       System.out.println("Không tìm thấy thông tin người dùng hiện tại.");
@@ -74,7 +84,7 @@ public class NormalUserMenuLogicHandle {
       String reason = scanner.nextLine();
 
       Leave leave = new Leave(startDate, endDate, reason);
-      currentUser.addLeave(leave); // Giả sử có phương thức addLeave trong Employee
+      currentUser.addLeave(leave); // Giả sử có method addLeave trong Employee
       System.out.println("Yêu cầu nghỉ phép đã được gửi với lý do: " + reason +
           " từ " + startDate + " đến " + endDate + ".");
     } else {

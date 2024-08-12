@@ -1,4 +1,4 @@
-package view;
+package view.manager;
 
 import entity.Department;
 import entity.Employee;
@@ -8,17 +8,16 @@ import service.ManagerMenuLogicHandle;
 
 public class ManagerMenu {
 
-  private Department currentDepartment;
-  private List<Employee> employeeList; // List of employees in the department
-  private Scanner scanner;
-  private ManagerMenuLogicHandle managerMenuLogicHandle; // Thêm đối tượng ManagerMenuLogicHandle
+  private Department currentDepartment; // Phòng ban hiện tại
+  private List<Employee> employeeList; // Danh sách nhân viên trong phòng ban
+  private Scanner scanner; // Đối tượng Scanner để nhận đầu vào từ người dùng
+  private ManagerMenuLogicHandle managerMenuLogicHandle; // Đối tượng quản lý menu trưởng phòng
 
   public ManagerMenu(Department department, List<Employee> employeeList) {
     this.currentDepartment = department;
     this.employeeList = employeeList;
     this.scanner = new Scanner(System.in);
-    this.managerMenuLogicHandle = new ManagerMenuLogicHandle(department,
-        employeeList); // Khởi tạo đối tượng
+    this.managerMenuLogicHandle = new ManagerMenuLogicHandle(department, employeeList); // Khởi tạo đối tượng
   }
 
   public void display() {
@@ -35,30 +34,32 @@ public class ManagerMenu {
       System.out.println("0. Đăng xuất");
       System.out.print("Chọn chức năng: ");
 
+      // Nhận lựa chọn từ người dùng
       choice = scanner.nextInt();
-      scanner.nextLine(); // Đọc dòng còn lại
+      scanner.nextLine(); // Đọc dòng còn lại sau khi nhập số
 
+      // Xử lý lựa chọn của người dùng
       switch (choice) {
         case 1:
-          managerMenuLogicHandle.addEmployee();
+          managerMenuLogicHandle.addEmployee(scanner); // Phương thức thêm nhân viên
           break;
         case 2:
-          managerMenuLogicHandle.displayEmployeeInfo();
+          managerMenuLogicHandle.displayEmployeeInfo(scanner); // Phương thức xem thông tin nhân viên
           break;
         case 3:
-          managerMenuLogicHandle.updateEmployeeInfo();
+          managerMenuLogicHandle.updateEmployeeInfo(scanner); // Phương thức sửa thông tin nhân viên
           break;
         case 4:
-          managerMenuLogicHandle.lockEmployeeAccount();
+          managerMenuLogicHandle.lockEmployeeAccount(scanner); // Phương thức khóa tài khoản nhân viên
           break;
         case 5:
-          managerMenuLogicHandle.searchEmployee();
+          managerMenuLogicHandle.searchEmployee(scanner); // Phương thức tìm kiếm nhân viên
           break;
         case 6:
-          managerMenuLogicHandle.calculateEmployeeSalary();
+          managerMenuLogicHandle.calculateEmployeeSalary(scanner); // Phương thức tính lương
           break;
         case 7:
-          managerMenuLogicHandle.addLeaveToEmployee();
+          managerMenuLogicHandle.addLeaveToEmployee(scanner); // Phương thức thêm ngày nghỉ
           break;
         case 0:
           System.out.println("Đăng xuất thành công.");
@@ -68,5 +69,4 @@ public class ManagerMenu {
       }
     } while (choice != 0);
   }
-
 }

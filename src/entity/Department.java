@@ -5,17 +5,31 @@ import java.util.List;
 
 public class Department { // mô tả thông tin về phòng ban và danh sách nhân viên thuộc phòng ban đó
 
-  private String departmentId; // Mã phòng ban
+  private int departmentId; // Mã phòng ban
   private String departmentName; // Tên phòng ban
   private List<Employee> employees; // Danh sách nhân viên thuộc phòng ban
   private boolean active; // Trạng thái hoạt động của phòng ban
 
   // Constructor
-  public Department(String departmentId, String departmentName) {
+
+  public Department(int departmentId, String departmentName) {
     this.departmentId = departmentId; // Khởi tạo mã phòng ban
     this.departmentName = departmentName; // Khởi tạo tên phòng ban
     this.employees = new ArrayList<>(); // Khởi tạo danh sách nhân viên
     this.active = true; // Mặc định phòng ban ở trạng thái hoạt động
+  }
+
+  public Department(String departmentName) {
+    this.departmentName = departmentName;
+  }
+
+  public String getName() {
+    return departmentName;
+  }
+
+  @Override
+  public String toString() {
+    return departmentName;
   }
 
   // Lấy tên phòng ban
@@ -29,7 +43,7 @@ public class Department { // mô tả thông tin về phòng ban và danh sách 
   }
 
   // Lấy mã phòng ban
-  public String getDepartmentId() {
+  public int getDepartmentId() {
     return departmentId;
   }
 
